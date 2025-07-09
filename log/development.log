@@ -12181,3 +12181,706 @@ Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:45:10 -0700
   
 ActionController::RoutingError (No route matches [GET] "/drawings"):
   
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(225417378621609615) /*application='Railway'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railway'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Railway'*/[0m
+Migrating to CreateDrawings (20250709154542)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Railway'*/[0m
+  [1m[35m (40.7ms)[0m  [1m[35mCREATE TABLE "drawings" ("id" bigserial primary key, "artist" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Railway'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250709154542') RETURNING "version" /*application='Railway'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Railway'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(225417378621609615) /*application='Railway'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railway'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-07-09 08:46:01 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railway'*/[0m
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  Rendered drawings/index.html.erb within layouts/application (Duration: 37.1ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 41.5ms | GC: 1.4ms)
+Completed 200 OK in 77ms (Views: 27.8ms | ActiveRecord: 15.7ms (1 query, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 08:46:05 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 4.5ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 6.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.4ms)
+Completed 200 OK in 47ms (Views: 9.0ms | ActiveRecord: 4.7ms (0 queries, 0 cached) | GC: 1.2ms)
+
+
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 08:46:06 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => ""}, "commit" => "Create Drawing"}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Create (6.8ms)[0m  [1m[32mINSERT INTO "drawings" ("artist", "created_at", "updated_at") VALUES ('', '2025-07-09 15:46:06.840788', '2025-07-09 15:46:06.840788') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mTRANSACTION (22.5ms)[0m  [1m[35mCOMMIT /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+Redirected to http://127.0.0.1:3000/drawings/1
+Completed 302 Found in 64ms (ActiveRecord: 29.9ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/drawings/1" for 127.0.0.1 at 2025-07-09 08:46:06 -0700
+Processing by DrawingsController#show as TURBO_STREAM
+  Parameters: {"id" => "1"}
+  [1m[36mDrawing Load (1.4ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 1 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  Rendered drawings/_drawing.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 7.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 10.0ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/drawings/1/edit" for 127.0.0.1 at 2025-07-09 08:46:07 -0700
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mDrawing Load (1.2ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 1 LIMIT 1 /*action='edit',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/edit.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 6.3ms | GC: 2.9ms)
+  Rendered drawings/edit.html.erb within layouts/application (Duration: 9.0ms | GC: 2.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | GC: 2.9ms)
+Completed 200 OK in 37ms (Views: 11.9ms | ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/drawings/1/edit" for 127.0.0.1 at 2025-07-09 08:49:30 -0700
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mDrawing Load (1.6ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 1 LIMIT 1 /*action='edit',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/edit.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 2.7ms | GC: 0.0ms)
+  Rendered drawings/edit.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 6.4ms | ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 08:49:31 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 2.4ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 5.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:49:32 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (0.7ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  Rendered drawings/_drawing.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 20.3ms | GC: 3.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | GC: 3.7ms)
+Completed 200 OK in 49ms (Views: 30.1ms | ActiveRecord: 1.5ms (2 queries, 0 cached) | GC: 3.7ms)
+
+
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 08:49:34 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => "me"}, "commit" => "Create Drawing"}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Create (3.3ms)[0m  [1m[32mINSERT INTO "drawings" ("artist", "created_at", "updated_at") VALUES ('me', '2025-07-09 15:49:34.911901', '2025-07-09 15:49:34.911901') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+Redirected to http://127.0.0.1:3000/drawings/2
+Completed 302 Found in 21ms (ActiveRecord: 7.0ms (1 query, 0 cached) | GC: 3.2ms)
+
+
+Started GET "/drawings/2" for 127.0.0.1 at 2025-07-09 08:49:34 -0700
+Processing by DrawingsController#show as TURBO_STREAM
+  Parameters: {"id" => "2"}
+  [1m[36mDrawing Load (1.0ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 2 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 4.1ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | GC: 1.5ms)
+Completed 200 OK in 27ms (Views: 7.5ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 5.2ms)
+
+
+Started GET "/drawings/2/edit" for 127.0.0.1 at 2025-07-09 08:50:08 -0700
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mDrawing Load (2.1ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 2 LIMIT 1 /*action='edit',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/edit.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 4.2ms | GC: 0.8ms)
+  Rendered drawings/edit.html.erb within layouts/application (Duration: 9.6ms | GC: 4.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | GC: 4.7ms)
+Completed 200 OK in 43ms (Views: 13.0ms | ActiveRecord: 2.0ms (1 query, 0 cached) | GC: 7.6ms)
+
+
+Started GET "/drawings/2/edit" for 127.0.0.1 at 2025-07-09 08:50:08 -0700
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mDrawing Load (1.0ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 2 LIMIT 1 /*action='edit',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/edit.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 3.2ms | GC: 0.7ms)
+  Rendered drawings/edit.html.erb within layouts/application (Duration: 4.0ms | GC: 0.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | GC: 2.3ms)
+Completed 200 OK in 31ms (Views: 9.6ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 4.1ms)
+
+
+Started GET "/drawings/2" for 127.0.0.1 at 2025-07-09 08:50:34 -0700
+Processing by DrawingsController#show as HTML
+  Parameters: {"id" => "2"}
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.2ms)
+
+
+  
+ArgumentError (You need to supply at least one validation):
+  
+app/models/drawing.rb:2:in '<class:Drawing>'
+app/models/drawing.rb:1:in '<main>'
+app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+Started GET "/drawings/2" for 127.0.0.1 at 2025-07-09 08:50:50 -0700
+Processing by DrawingsController#show as HTML
+  Parameters: {"id" => "2"}
+  [1m[36mDrawing Load (1.4ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 2 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  Rendered drawings/_drawing.html.erb (Duration: 1.3ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 8.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | GC: 1.4ms)
+Completed 200 OK in 70ms (Views: 22.1ms | ActiveRecord: 9.0ms (1 query, 0 cached) | GC: 2.2ms)
+
+
+Started DELETE "/drawings/2" for 127.0.0.1 at 2025-07-09 08:50:54 -0700
+Processing by DrawingsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "2"}
+  [1m[36mDrawing Load (1.0ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 2 LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mDrawing Destroy (1.8ms)[0m  [1m[31mDELETE FROM "drawings" WHERE "drawings"."id" = 2 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mTRANSACTION (21.6ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+Redirected to http://127.0.0.1:3000/drawings
+Completed 303 See Other in 41ms (ActiveRecord: 24.6ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:50:54 -0700
+Processing by DrawingsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (0.5ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 9.8ms | GC: 1.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | GC: 1.1ms)
+Completed 200 OK in 25ms (Views: 10.6ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/drawings/1/edit" for 127.0.0.1 at 2025-07-09 08:50:55 -0700
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mDrawing Load (1.5ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 1 LIMIT 1 /*action='edit',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/edit.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 5.8ms | GC: 0.0ms)
+  Rendered drawings/edit.html.erb within layouts/application (Duration: 9.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | GC: 0.0ms)
+Completed 200 OK in 61ms (Views: 13.4ms | ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/drawings/1" for 127.0.0.1 at 2025-07-09 08:50:59 -0700
+Processing by DrawingsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "1"}
+  [1m[36mDrawing Load (2.6ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 1 LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mDrawing Destroy (4.5ms)[0m  [1m[31mDELETE FROM "drawings" WHERE "drawings"."id" = 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+Redirected to http://127.0.0.1:3000/drawings
+Completed 303 See Other in 63ms (ActiveRecord: 13.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:50:59 -0700
+Processing by DrawingsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  Rendered drawings/index.html.erb within layouts/application (Duration: 5.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 1.1ms)
+Completed 200 OK in 27ms (Views: 8.3ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 08:51:00 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 2.6ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 4.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 0.0ms)
+Completed 200 OK in 49ms (Views: 8.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 08:51:02 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => ""}, "commit" => "Create Drawing"}
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 3.6ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 4.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 32ms (Views: 8.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 08:51:06 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => "me"}, "commit" => "Create Drawing"}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Create (4.7ms)[0m  [1m[32mINSERT INTO "drawings" ("artist", "created_at", "updated_at") VALUES ('me', '2025-07-09 15:51:06.326437', '2025-07-09 15:51:06.326437') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mTRANSACTION (21.4ms)[0m  [1m[35mCOMMIT /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+Redirected to http://127.0.0.1:3000/drawings/3
+Completed 302 Found in 59ms (ActiveRecord: 26.8ms (1 query, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/drawings/3" for 127.0.0.1 at 2025-07-09 08:51:06 -0700
+Processing by DrawingsController#show as TURBO_STREAM
+  Parameters: {"id" => "3"}
+  [1m[36mDrawing Load (1.1ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 3 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:63:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 4.0ms | GC: 1.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 1.1ms)
+Completed 200 OK in 32ms (Views: 6.7ms | ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:51:06 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (1.1ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 11.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 12.0ms | ActiveRecord: 2.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mCACHE ActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(225417378621609615) /*application='Railway'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railway'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Railway'*/[0m
+Migrating to CreateActiveStorageTables (20250709155128)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Railway'*/[0m
+  [1m[35m (20.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL) /*application='Railway'*/[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key") /*application='Railway'*/[0m
+  [1m[35m (22.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='Railway'*/[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id") /*application='Railway'*/[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id") /*application='Railway'*/[0m
+  [1m[35m (24.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+) /*application='Railway'*/[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest") /*application='Railway'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250709155128') RETURNING "version" /*application='Railway'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT /*application='Railway'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(225417378621609615) /*application='Railway'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railway'*/[0m
+Started GET "/drawings/3" for 127.0.0.1 at 2025-07-09 08:54:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Railway'*/[0m
+Processing by DrawingsController#show as HTML
+  Parameters: {"id" => "3"}
+  [1m[36mDrawing Load (0.7ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 3 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:64:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  Rendered drawings/_drawing.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 6.8ms | GC: 1.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | GC: 3.2ms)
+Completed 200 OK in 119ms (Views: 17.8ms | ActiveRecord: 7.2ms (1 query, 0 cached) | GC: 25.2ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 08:54:24 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 7.0ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 9.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 12.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:54:25 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (0.7ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 9.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 9.4ms | ActiveRecord: 2.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 08:54:31 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => "me", "image" => #<ActionDispatch::Http::UploadedFile:0x00007a59d0516e00 @tempfile=#<Tempfile:/tmp/RackMultipart20250709-9241-jvl2md.jpg>, @content_type="image/jpeg", @original_filename="saengji.jpg", @headers="Content-Disposition: form-data; name=\"drawing[image]\"; filename=\"saengji.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit" => "Create Drawing"}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Create (5.0ms)[0m  [1m[32mINSERT INTO "drawings" ("artist", "created_at", "updated_at") VALUES ('me', '2025-07-09 15:54:31.921913', '2025-07-09 15:54:31.921913') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Blob Load (3.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Blob Create (1.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('8qs5whpwm4b1su4le8nd04pq04c4', 'saengji.jpg', 'image/jpeg', '{"identified":true}', 'local', 296974, 'rAhsfmq0yxli+aZZjLbxiQ==', '2025-07-09 15:54:32.021083') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Attachment Create (2.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('image', 'Drawing', 4, 1, '2025-07-09 15:54:32.026349') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Update (0.6ms)[0m  [1m[33mUPDATE "drawings" SET "updated_at" = '2025-07-09 15:54:32.031111' WHERE "drawings"."id" = 4 /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+[36m  Disk Storage (3.5ms) [0m[32mUploaded file to key: 8qs5whpwm4b1su4le8nd04pq04c4 (checksum: rAhsfmq0yxli+aZZjLbxiQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f) to Async(default) with arguments: #<GlobalID:0x00007a59cd1774a0 @uri=#<URI::GID gid://railway/ActiveStorage::Blob/1>>
+[ActiveJob] ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+Redirected to http://127.0.0.1:3000/drawings/4
+Completed 302 Found in 218ms (ActiveRecord: 26.1ms (6 queries, 0 cached) | GC: 10.3ms)
+
+
+Started GET "/drawings/4" for 127.0.0.1 at 2025-07-09 08:54:32 -0700
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mActiveStorage::Blob Load (2.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*application='Railway'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f] Performing ActiveStorage::AnalyzeJob (Job ID: 48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f) from Async(default) enqueued at 2025-07-09T15:54:32.084228384Z with arguments: #<GlobalID:0x00007a59cd0d7590 @uri=#<URI::GID gid://railway/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mActiveStorage::Blob Update (7.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 1 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mActiveStorage::Attachment Load (1.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 1 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mDrawing Load (1.7ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 4 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mDrawing Update (2.4ms)[0m  [1m[33mUPDATE "drawings" SET "updated_at" = '2025-07-09 15:54:32.211997' WHERE "drawings"."id" = 4 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+Processing by DrawingsController#show as TURBO_STREAM
+  Parameters: {"id" => "4"}
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f]   [1m[36mTRANSACTION (5.1ms)[0m  [1m[35mCOMMIT /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f] Performed ActiveStorage::AnalyzeJob (Job ID: 48f2afa7-fc36-4ec1-b0b1-8f94bb36dd5f) from Async(default) in 128.89ms
+  [1m[36mDrawing Load (1.1ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 4 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:64:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 4.7ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+  [1m[36mDrawing Load (2.1ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" ORDER BY "drawings"."id" DESC LIMIT 1 /*application='Railway'*/[0m
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:54:50 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (1.2ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  Rendered drawings/_drawing.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 15.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | GC: 0.9ms)
+Completed 200 OK in 45ms (Views: 15.9ms | ActiveRecord: 3.3ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/drawings/3/edit" for 127.0.0.1 at 2025-07-09 08:54:52 -0700
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id" => "3"}
+  [1m[36mDrawing Load (1.5ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 3 LIMIT 1 /*action='edit',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:64:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/edit.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 3.8ms | GC: 0.0ms)
+  Rendered drawings/edit.html.erb within layouts/application (Duration: 6.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 10.1ms | ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/drawings/3" for 127.0.0.1 at 2025-07-09 08:54:53 -0700
+Processing by DrawingsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "3"}
+  [1m[36mDrawing Load (1.0ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 3 LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:64:in 'DrawingsController#set_drawing'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mActiveStorage::Attachment Load (2.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 3 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mDrawing Destroy (0.5ms)[0m  [1m[31mDELETE FROM "drawings" WHERE "drawings"."id" = 3 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+Redirected to http://127.0.0.1:3000/drawings
+Completed 303 See Other in 27ms (ActiveRecord: 7.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:54:53 -0700
+Processing by DrawingsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (0.4ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  Rendered drawings/_drawing.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 6.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 7.7ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/drawings/4" for 127.0.0.1 at 2025-07-09 08:54:54 -0700
+Processing by DrawingsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "id" => "4"}
+  [1m[36mDrawing Load (1.0ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 4 LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:64:in 'DrawingsController#set_drawing'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mActiveStorage::Attachment Load (4.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 4 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mActiveStorage::Attachment Destroy (0.7ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mDrawing Destroy (0.5ms)[0m  [1m[31mDELETE FROM "drawings" WHERE "drawings"."id" = 4 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mTRANSACTION (20.8ms)[0m  [1m[35mCOMMIT /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*action='destroy',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: d37cf281-fa97-4cbb-b597-b0549c3fbe43) to Async(default) with arguments: #<GlobalID:0x00007a59cfb207c0 @uri=#<URI::GID gid://railway/ActiveStorage::Blob/1>>
+[ActiveJob] ↳ app/controllers/drawings_controller.rb:52:in 'DrawingsController#destroy'
+Redirected to http://127.0.0.1:3000/drawings
+Completed 303 See Other in 92ms (ActiveRecord: 28.7ms (5 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:54:55 -0700
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mActiveStorage::Blob Load (1.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 LIMIT 1 /*application='Railway'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43] Performing ActiveStorage::PurgeJob (Job ID: d37cf281-fa97-4cbb-b597-b0549c3fbe43) from Async(default) enqueued at 2025-07-09T15:54:55.030746358Z with arguments: #<GlobalID:0x00007a59cfbcf900 @uri=#<URI::GID gid://railway/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mBEGIN /*application='Railway',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mActiveStorage::Attachment Exists? (9.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 1 LIMIT 1 /*application='Railway',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mActiveStorage::VariantRecord Load (2.7ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = 1 /*application='Railway',job='ActiveStorage%3A%3APurgeJob'*/[0m
+Processing by DrawingsController#index as TURBO_STREAM
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mActiveStorage::Attachment Load (4.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 1 AND "active_storage_attachments"."record_type" = 'ActiveStorage::Blob' AND "active_storage_attachments"."name" = 'preview_image' LIMIT 1 /*application='Railway',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mActiveStorage::Blob Destroy (3.4ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 1 /*application='Railway',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43]   [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT /*application='Railway',job='ActiveStorage%3A%3APurgeJob'*/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43] [36m  Disk Storage (1.0ms) [0m[31mDeleted file from key: 8qs5whpwm4b1su4le8nd04pq04c4[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43] [36m  Disk Storage (0.5ms) [0m[31mDeleted files by key prefix: variants/8qs5whpwm4b1su4le8nd04pq04c4/[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [d37cf281-fa97-4cbb-b597-b0549c3fbe43] Performed ActiveStorage::PurgeJob (Job ID: d37cf281-fa97-4cbb-b597-b0549c3fbe43) from Async(default) in 102.99ms
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  Rendered drawings/index.html.erb within layouts/application (Duration: 5.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | GC: 2.7ms)
+Completed 200 OK in 61ms (Views: 13.0ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 2.7ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:55:21 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  Rendered drawings/index.html.erb within layouts/application (Duration: 8.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | GC: 1.2ms)
+Completed 200 OK in 44ms (Views: 17.0ms | ActiveRecord: 4.7ms (1 query, 0 cached) | GC: 2.2ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 08:55:23 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 5.7ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 8.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | GC: 0.0ms)
+Completed 200 OK in 43ms (Views: 11.7ms | ActiveRecord: 4.2ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 08:55:29 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => "me", "image" => #<ActionDispatch::Http::UploadedFile:0x00007a59cfb4fac0 @tempfile=#<Tempfile:/tmp/RackMultipart20250709-9241-1a5xp.jpg>, @content_type="image/jpeg", @original_filename="saengji.jpg", @headers="Content-Disposition: form-data; name=\"drawing[image]\"; filename=\"saengji.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit" => "Create Drawing"}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Create (4.6ms)[0m  [1m[32mINSERT INTO "drawings" ("artist", "created_at", "updated_at") VALUES ('me', '2025-07-09 15:55:29.518296', '2025-07-09 15:55:29.518296') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ('qvvkp1gzz3duukqjhlgvdvvm8kk4', 'saengji.jpg', 'image/jpeg', '{"identified":true}', 'local', 296974, 'rAhsfmq0yxli+aZZjLbxiQ==', '2025-07-09 15:55:29.555809') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ('image', 'Drawing', 5, 2, '2025-07-09 15:55:29.559242') RETURNING "id" /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mDrawing Update (0.8ms)[0m  [1m[33mUPDATE "drawings" SET "updated_at" = '2025-07-09 15:55:29.563069' WHERE "drawings"."id" = 5 /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mTRANSACTION (20.9ms)[0m  [1m[35mCOMMIT /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+[36m  Disk Storage (3.8ms) [0m[32mUploaded file to key: qvvkp1gzz3duukqjhlgvdvvm8kk4 (checksum: rAhsfmq0yxli+aZZjLbxiQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 24c38d1e-9138-4633-b3dd-12eedc4313bc) to Async(default) with arguments: #<GlobalID:0x00007a59ccf8af98 @uri=#<URI::GID gid://railway/ActiveStorage::Blob/2>>
+[ActiveJob] ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+Redirected to http://127.0.0.1:3000/drawings/5
+Completed 302 Found in 147ms (ActiveRecord: 41.0ms (6 queries, 0 cached) | GC: 3.1ms)
+
+
+Started GET "/drawings/5" for 127.0.0.1 at 2025-07-09 08:55:29 -0700
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mActiveStorage::Blob Load (1.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*application='Railway'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc] Performing ActiveStorage::AnalyzeJob (Job ID: 24c38d1e-9138-4633-b3dd-12eedc4313bc) from Async(default) enqueued at 2025-07-09T15:55:29.598289463Z with arguments: #<GlobalID:0x00007a59cfaa9fd0 @uri=#<URI::GID gid://railway/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mActiveStorage::Blob Update (5.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = '{"identified":true,"analyzed":true}' WHERE "active_storage_blobs"."id" = 2 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = 2 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mDrawing Load (1.0ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 5 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mDrawing Update (0.9ms)[0m  [1m[33mUPDATE "drawings" SET "updated_at" = '2025-07-09 15:55:29.644852' WHERE "drawings"."id" = 5 /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc]   [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT /*application='Railway',job='ActiveStorage%3A%3AAnalyzeJob'*/[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [24c38d1e-9138-4633-b3dd-12eedc4313bc] Performed ActiveStorage::AnalyzeJob (Job ID: 24c38d1e-9138-4633-b3dd-12eedc4313bc) from Async(default) in 35.35ms
+Processing by DrawingsController#show as TURBO_STREAM
+  Parameters: {"id" => "5"}
+  [1m[36mDrawing Load (0.8ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = 5 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:64:in 'DrawingsController#set_drawing'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/_drawing.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='show',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/_drawing.html.erb:5
+  Rendered drawings/_drawing.html.erb (Duration: 10.8ms | GC: 0.0ms)
+  Rendered drawings/show.html.erb within layouts/application (Duration: 14.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | GC: 0.0ms)
+Completed 200 OK in 30ms (Views: 14.0ms | ActiveRecord: 2.4ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--62577ccb20e7a97647f7a2425f50db4cc637a422/saengji.jpg" for 127.0.0.1 at 2025-07-09 08:55:29 -0700
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id" => "eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--62577ccb20e7a97647f7a2425f50db4cc637a422", "filename" => "saengji"}
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='show',application='Railway',controller='redirect'*/[0m
+[36m  Disk Storage (1.0ms) [0m[34mGenerated URL for file at key: qvvkp1gzz3duukqjhlgvdvvm8kk4 (http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxdnZrcDFnenozZHV1a3FqaGxndmR2dm04a2s0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic2FlbmdqaS5qcGdcIjsgZmlsZW5hbWUqPVVURi04JydzYWVuZ2ppLmpwZyIsImNvbnRlbnRfdHlwZSI6ImltYWdlL2pwZWciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI1LTA3LTA5VDE2OjAwOjI5Ljc4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2f72ab4c4531ef3226f183b58c1d1568f95f9c7d/saengji.jpg)[0m
+Redirected to http://127.0.0.1:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxdnZrcDFnenozZHV1a3FqaGxndmR2dm04a2s0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic2FlbmdqaS5qcGdcIjsgZmlsZW5hbWUqPVVURi04JydzYWVuZ2ppLmpwZyIsImNvbnRlbnRfdHlwZSI6ImltYWdlL2pwZWciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI1LTA3LTA5VDE2OjAwOjI5Ljc4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2f72ab4c4531ef3226f183b58c1d1568f95f9c7d/saengji.jpg
+Completed 302 Found in 24ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxdnZrcDFnenozZHV1a3FqaGxndmR2dm04a2s0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic2FlbmdqaS5qcGdcIjsgZmlsZW5hbWUqPVVURi04JydzYWVuZ2ppLmpwZyIsImNvbnRlbnRfdHlwZSI6ImltYWdlL2pwZWciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI1LTA3LTA5VDE2OjAwOjI5Ljc4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2f72ab4c4531ef3226f183b58c1d1568f95f9c7d/saengji.jpg" for 127.0.0.1 at 2025-07-09 08:55:29 -0700
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key" => "[FILTERED]", "filename" => "saengji"}
+Completed 200 OK in 21ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 08:56:43 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (1.3ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/_drawing.html.erb:5
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/_drawing.html.erb:5
+  Rendered drawings/_drawing.html.erb (Duration: 13.0ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 25.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | GC: 0.0ms)
+Completed 200 OK in 58ms (Views: 23.5ms | ActiveRecord: 5.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxdnZrcDFnenozZHV1a3FqaGxndmR2dm04a2s0IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwic2FlbmdqaS5qcGdcIjsgZmlsZW5hbWUqPVVURi04JydzYWVuZ2ppLmpwZyIsImNvbnRlbnRfdHlwZSI6ImltYWdlL2pwZWciLCJzZXJ2aWNlX25hbWUiOiJsb2NhbCJ9LCJleHAiOiIyMDI1LTA3LTA5VDE2OjAwOjI5Ljc4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2f72ab4c4531ef3226f183b58c1d1568f95f9c7d/saengji.jpg" for 127.0.0.1 at 2025-07-09 08:56:43 -0700
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key" => "[FILTERED]", "filename" => "saengji"}
+Completed 304 Not Modified in 16ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 09:02:30 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 3.0ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 4.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 6.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/drawings" for 127.0.0.1 at 2025-07-09 09:02:31 -0700
+Processing by DrawingsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/index.html.erb within layouts/application
+  [1m[36mDrawing Exists? (37.3ms)[0m  [1m[34mSELECT 1 AS one FROM "drawings" LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:14
+  [1m[36mDrawing Load (1.3ms)[0m  [1m[34mSELECT "drawings".* FROM "drawings" /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/index.html.erb:15
+  [1m[36mActiveStorage::Attachment Load (2.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = 5 AND "active_storage_attachments"."record_type" = 'Drawing' AND "active_storage_attachments"."name" = 'image' LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/_drawing.html.erb:5
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = 2 LIMIT 1 /*action='index',application='Railway',controller='drawings'*/[0m
+  ↳ app/views/drawings/_drawing.html.erb:5
+  Rendered drawings/_drawing.html.erb (Duration: 16.1ms | GC: 0.0ms)
+  Rendered drawings/index.html.erb within layouts/application (Duration: 91.9ms | GC: 26.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 94.4ms | GC: 26.3ms)
+Completed 200 OK in 116ms (Views: 41.5ms | ActiveRecord: 53.8ms (4 queries, 0 cached) | GC: 26.3ms)
+
+
+Started GET "/drawings/new" for 127.0.0.1 at 2025-07-09 09:03:15 -0700
+Processing by DrawingsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 2.9ms | GC: 0.0ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 5.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | GC: 0.4ms)
+Completed 200 OK in 47ms (Views: 11.2ms | ActiveRecord: 7.5ms (0 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-07-09 09:03:15 -0700
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-07-09 09:03:15 -0700
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-07-09 09:03:16 -0700
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-07-09 09:03:16 -0700
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-07-09 09:03:16 -0700
+Started GET "/assets/turbo.min-3a2e143f.js" for 127.0.0.1 at 2025-07-09 09:03:16 -0700
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-07-09 09:03:16 -0700
+Started POST "/drawings" for 127.0.0.1 at 2025-07-09 09:03:18 -0700
+Processing by DrawingsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "drawing" => {"artist" => "wef"}, "commit" => "Create Drawing"}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK /*action='create',application='Railway',controller='drawings'*/[0m
+  ↳ app/controllers/drawings_controller.rb:27:in 'block in DrawingsController#create'
+  Rendering layout layouts/application.html.erb
+  Rendering drawings/new.html.erb within layouts/application
+  Rendered drawings/_form.html.erb (Duration: 4.6ms | GC: 1.1ms)
+  Rendered drawings/new.html.erb within layouts/application (Duration: 5.2ms | GC: 1.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | GC: 1.1ms)
+Completed 422 Unprocessable Content in 44ms (Views: 7.2ms | ActiveRecord: 7.7ms (0 queries, 0 cached) | GC: 1.8ms)
+
+
