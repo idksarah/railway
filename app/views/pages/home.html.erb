@@ -1,0 +1,65 @@
+<div class="absolute">
+  <%# <img src={}> %>
+</div>
+<div class="flex p-2" style="flex-direction: column; align-items: center">
+  <p class="accent h1 italic">RAILWAY</p>
+  <p class="h3 italic">7/11 to 7/14 | <span class="accent"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
+  </span> </p>
+  <button class="accentBg accent1 italic cursor-pointer p-2 m-10">SUBMIT</button>
+</div>
+<div class="about flex gap-10 p-2">
+  <p class="h2 italic width-[50%]" style="text-align: center">WHAT'S THE DEAL HERE?</p>
+  <div>
+    <p class="h3 width-[50%] italic">build a site with ruby on rails, receive stickers!</p>
+    <p>(stickers at the bottom)</p>
+  </div>
+</div>
+<div class="flex p-2">
+  <div class="requirements  p-2 h2 size-[50%]">
+    <p class="h2 accent italic">REQUIREMENTS</p>
+    <ul class="list-disc h4">
+      <li>track at least 2 hours with hackatime</li>
+      <li>utilize the rails router</li>
+      <li>create a backend where users can upload and see data from other users</li>
+      <li>include a create, read, update, delete endpoint</li>
+      <li>include error handling/minimum requirements in your post/update endpoints</li>
+      <li>deploy your site</li>
+      <li>open source your code on github</li>
+      <%# <li></li> %>
+    </ul>
+  </div>
+  <div class="size-[50%] faqs  p-2 accentBg accent1">
+    <p class="h2 italic">FAQS</p>
+    <%= render(FaqComponent.new(q:"can i participate?", a:"if you're in middle school or high school, yes!"))%>
+    <%= render(FaqComponent.new(q:"do i have to use hackatime?", a:"yes! get started here: https://hackatime.hackclub.com"))%>
+    <%= render(FaqComponent.new(q:"what are some ways users can interact with a db?", a:"comment sections! counters! drawings! etc!"))%>
+    <%= render(FaqComponent.new(q:"how cool are the stickers?", a:"totally rad!"))%>
+    <%= render(FaqComponent.new(q:"when does this end?", a:"7/15/2025 11:59 EST"))%>
+    <%= render(FaqComponent.new(q:"i have more questions!", a:"check out #railway on the hack club slack!"))%>
+  </div>
+</div>
+<div class="gallery p-2">
+  <p class="h2 italic" style="text-align:center">GALLERY</p>
+  <p class="italic"style="text-align:center" >reload to see other drawings</p>
+    <%# <%= render(ImageCardComponent.new(artist:"me", image_url:"https://hc-cdn.hel1.your-objectstorage.com/s/v3/c33625700c82c03143177f288b223ee4007d1ea0_image.png")) %> %>
+    <%# <%= render 'drawings/form', drawing: Drawing.new %> %>
+
+</div>
+<div class="guides">
+  <p class="h2 italic" style="text-align: center">GUIDES</p>
+  <p class="italic"style="text-align:center" >some how-to's by yours truly :3</p>
+  <div class="p-2 flex gap-2">
+    <%= link_to "INSTALL WAKATIME", wakatime_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]" %>
+    <%= link_to "CREATE A GITHUB REPO", github_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]"%>
+    <%= link_to "CREATE A RAILS APP", create_rails_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]"%>
+    <%= link_to "DEPLOY A RAILS APP", deploy_rails_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]"%>
+
+  </div>
+</div>
+<div class="stickers">
+  <p class="accent h2 italic">sticker sheet! :D</p>
+  <img class="max-w-3xl" src="/images/stickers.png " alt="stickers">
+</div>
+<div class="footer p-2">
+  <p class="italic">built with <span class="accent"><3</span> by <a class="accent" target="_blank" href="https://github.com/idksarah">idksarah</a></p>
+</div>

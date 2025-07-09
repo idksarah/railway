@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+body {
+    background-color: #EBE4D3;
+}
+
+main {
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.accent {
+    color: #CC0000;
+}
+
+.h1 {
+    font-size: 10rem;
+    font-weight: 800;
+}
+
+.h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.h4 {
+    font-size: 1rem;
+}
+
+.accent1 {
+    color: white;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.accentBg {
+    background-color: #CC0000;
+}
+
+.h1, .h2, .h3 {
+}
+
+.newStep {
+
+}
