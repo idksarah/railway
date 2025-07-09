@@ -21,7 +21,7 @@
       <li>track at least 2 hours with hackatime</li>
       <li>utilize the rails router</li>
       <li>create a backend where users can upload and see data from other users</li>
-      <li>include a create, read, update, delete endpoint</li>
+      <li>include a create, read, update, and delete endpoint</li>
       <li>include error handling/minimum requirements in your post/update endpoints</li>
       <li>deploy your site</li>
       <li>open source your code on github</li>
@@ -38,11 +38,29 @@
     <%= render(FaqComponent.new(q:"i have more questions!", a:"check out #railway on the hack club slack!"))%>
   </div>
 </div>
-<div class="gallery p-2">
+<div class="flex flex-col gallery p-2" style=" align-items:center">
   <p class="h2 italic" style="text-align:center">GALLERY</p>
-  <p class="italic"style="text-align:center" >reload to see other drawings</p>
-    <%# <%= render(ImageCardComponent.new(artist:"me", image_url:"https://hc-cdn.hel1.your-objectstorage.com/s/v3/c33625700c82c03143177f288b223ee4007d1ea0_image.png")) %> %>
-    <%# <%= render 'drawings/form', drawing: Drawing.new %> %>
+  <p class="italic"style="text-align:center;" >reload to see other hack clubber's drawings</p>
+  <div class="flex gap-2 p-2">
+      <% num = Drawing.count_by_sql("SELECT COUNT(*) FROM drawings") %>
+    <% if num != 0 %>
+    <%numNum = rand(num) + 1%>
+      <%=render(DrawingComponent.new(num: numNum ))%>
+      <% if (numNum - 1) > 0 %>
+        <%=render(DrawingComponent.new(num: (numNum - 1)))%>
+      <%end%>
+      <% if (numNum - 2) > 0 %>
+        <%=render(DrawingComponent.new(num: (numNum - 2)))%>
+      <%end%>
+    <%else%>
+      <p>nothing here! come back later :3</p>
+    <%end%>
+  </div>
+  <div class="flex gap-2">
+      <%= link_to "WANT TO DRAW YOUR OWN?", new_drawing_path, class: "accentBg accent1 italic p-2"%>
+      <%= link_to "VIEW THE REST", drawings_path, class: "accentBg accent1 italic p-2"%>
+  </di>
+
 
 </div>
 <div class="guides">

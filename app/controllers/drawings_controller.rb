@@ -1,3 +1,6 @@
+require 'base64'
+require 'stringio'
+
 class DrawingsController < ApplicationController
   before_action :set_drawing, only: %i[show edit update destroy]
 
@@ -22,6 +25,20 @@ class DrawingsController < ApplicationController
   # POST /drawings or /drawings.json
   def create
     @drawing = Drawing.new(drawing_params)
+
+    if params[:image_data].present?
+      image_data = params[:image_data]
+      content_type = image_data[%r{data:(image/\w+);base64}, 1] || 'image/png'
+      base64_string = image_data.split(',')[1]
+      decoded_data = Base64.decode64(base64_string)
+      io = StringIO.new(decoded_data)
+
+      @drawing.image.attach(
+        io: io,
+        filename: "drawing-#{Time.now.to_i}.png",
+        content_type: content_type
+      )
+    end
 
     respond_to do |format|
       if @drawing.save
@@ -61,11 +78,11 @@ class DrawingsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_drawing
-    @drawing = Drawing.find(params.expect(:id))
+    @drawing = Drawing.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def drawing_params
-    params.expect(drawing: %i[artist image])
+    params.require(:drawing).permit(:artist)
   end
 end

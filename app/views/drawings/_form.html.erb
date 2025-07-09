@@ -1,26 +1,45 @@
-<%= form_with(model: drawing, class: "contents") do |form| %>
-  <% if drawing.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
+<canvas id="canvas" width="600" height="600" style="border: 1px solid #000"></canvas>
 
-      <ul class="list-disc ml-6">
-        <% drawing.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with model: @drawing, local: true, html: { multipart: true } do |form| %>
+  <%= form.label :artist %>
+  <%= form.text_field :artist, :required => true %>
 
-  <div class="my-5">
-    <%= form.label :artist %>
-    <%= form.text_field :artist, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": drawing.errors[:artist].none?, "border-red-400 focus:outline-red-600": drawing.errors[:artist].any?}] %>
-  </div>
-  <div>
-    <%= form.label :image, style: "display: block"%>
-    <%= form.file_field :image%>
-  </div>
+  <%= hidden_field_tag :image_data, "", id: "image-data" %>
 
-  <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <%= form.submit "submit drawing", onclick: "prepareImage()" %>
 <% end %>
+
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  const baseImg = new Image();
+  baseImg.src = "/images/base.png";
+  baseImg.onload = () => {
+    ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
+  };
+
+  let drawing = false;
+  canvas.addEventListener("mousedown", () => { drawing = true; });
+  canvas.addEventListener("mouseup", () => { drawing = false; ctx.beginPath(); });
+  canvas.addEventListener("mousemove", draw);
+
+  function draw(e) {
+    if (!drawing) return;
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "black";
+
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+  }
+
+  function prepareImage() {
+    const dataUrl = canvas.toDataURL("image/png");
+    document.getElementById("image-data").value = dataUrl;
+    console.log(dataUrl);
+    // console.log("Free me");
+  }
+</script>

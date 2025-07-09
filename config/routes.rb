@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root 'pages#home'
-  root 'drawings#index'
+  root 'pages#home'
+  # root 'drawings#index'
   get 'pages/home'
   get 'wakatime', to: 'pages#wakatime', as: :wakatime
   get 'github', to: 'pages#github', as: :github
