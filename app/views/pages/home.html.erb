@@ -1,19 +1,18 @@
-<div class="absolute">
-  <%# <img src={}> %>
-</div>
-<div class="flex p-2" style="flex-direction: column; align-items: center">
-  <p class="accent h1 italic">RAILWAY</p>
-  <p class="h3 italic">7/11 to 7/14 | <span class="accent"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
+<div class="flex p-2 overflow-hidden" style="flex-direction: column; align-items: center; width: 100vw;">
+  <p class="accent h1 italic titling">RAILWAY</p>
+  <p class="h2 italic titling accent">7/11 to 7/14 | <span class="accent titling"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
   </span> </p>
   <button class="accentBg accent1 italic cursor-pointer p-2 m-10">SUBMIT</button>
+  <img src="/images/bg.png" style="margin-top: -18.5em; z-index: -1; opacity: 70%">
 </div>
-<div class="about flex gap-10 p-2">
+<div class="about flex gap-10 py-8">
   <p class="h2 italic width-[50%]" style="text-align: center">WHAT'S THE DEAL HERE?</p>
   <div>
     <p class="h3 width-[50%] italic">build a site with ruby on rails, receive stickers!</p>
     <p>(stickers at the bottom)</p>
   </div>
 </div>
+
 <div class="flex p-2">
   <div class="requirements  p-2 h2 size-[50%]">
     <p class="h2 accent italic">REQUIREMENTS</p>
@@ -42,16 +41,11 @@
   <p class="h2 italic" style="text-align:center">GALLERY</p>
   <p class="italic"style="text-align:center;" >reload to see other hack clubber's drawings</p>
   <div class="flex gap-2 p-2">
-      <% num = Drawing.count_by_sql("SELECT COUNT(*) FROM drawings") %>
-    <% if num != 0 %>
-    <%numNum = rand(num) + 1%>
-      <%=render(DrawingComponent.new(num: numNum ))%>
-      <% if (numNum - 1) > 0 %>
-        <%=render(DrawingComponent.new(num: (numNum - 1)))%>
-      <%end%>
-      <% if (numNum - 2) > 0 %>
-        <%=render(DrawingComponent.new(num: (numNum - 2)))%>
-      <%end%>
+      <%# <% num = Drawing.count_by_sql("SELECT COUNT(*) FROM drawings") %>
+    <% if Drawing.exists? %>
+      <%=render(DrawingComponent.new(num: Drawing.pluck(:id).sample ))%>
+      <%=render(DrawingComponent.new(num: Drawing.pluck(:id).sample ))%>
+      <%=render(DrawingComponent.new(num: Drawing.pluck(:id).sample ))%>
     <%else%>
       <p>nothing here! come back later :3</p>
     <%end%>

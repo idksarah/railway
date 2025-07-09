@@ -52,3 +52,9 @@ main {
 .newStep {
 
 }
+.w-full {
+    overflow-x: hidden;
+}
+.titling {
+    /* -webkit-text-stroke: 2px #CC0000; */
+}
