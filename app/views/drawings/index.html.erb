@@ -1,4 +1,4 @@
-<% content_for :title, "Drawings" %>
+<% content_for :title, "DRAWINGS" %>
 
 <div class="w-full">
   <% if notice.present? %>
@@ -7,23 +7,26 @@
 
   <div class="flex justify-between items-center">
   <p class="italic h2 accent" ><%= link_to "GO BACK", href="/"%></p>
-    <%= link_to "New drawing", new_drawing_path, class: "" %>
   </div>
 
   <div id="drawings" class="w-full divide-y divide-gray-200 space-y-5">
     <% if @drawings.any? %>
       <% @drawings.each do |drawing| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render drawing %>
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= link_to "Show", drawing, class: "" %>
-            <%= link_to "Edit", edit_drawing_path(drawing), class: "" %>
-            <%= button_to "Destroy", drawing, method: :delete, class: "", data: { turbo_confirm: "Are you sure?" } %>
+          <div class="flex flex-col justify-between items-center pb-5 sm:pb-0">
+            <%= render drawing %>
+        <% if current_user.display_name == drawing.artist%>
+            <div class="h-[50%] sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
+              <%= link_to "SHOW", drawing, class: "" %>
+              <%= link_to "EDIT", edit_drawing_path(drawing), class: "" %>
+              <%= button_to "DESTROY", drawing, method: :delete, class: "", data: { turbo_confirm: "ARE YOU SURE?" } %>
+            </div>
           </div>
-        </div>
+        <% else%>
+          </div>
+        <%end%>
       <% end %>
     <% else %>
-      <p class="text-center my-10">No drawings found.</p>
+      <p class="text-center my-10">NO DRAWINGS FOUND.</p>
     <% end %>
   </div>
 </div>

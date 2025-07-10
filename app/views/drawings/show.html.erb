@@ -1,15 +1,15 @@
-<% content_for :title, "Showing drawing" %>
+<% content_for :title, "SHOWING DRAWING" %>
 
 <div class="md:w-2/3 w-full">
   <% if notice.present? %>
-    <p class="" id="notice"><%= notice %></p>
+    <p class="" id="notice"><%= notice.upcase %></p>
   <% end %>
 
   <p class="italic h2 accent" ><%= link_to "GO BACK", href="/"%></p>
 
   <%= render @drawing %>
 
-  <%= link_to "Edit this drawing", edit_drawing_path(@drawing), class: "" %>
-  <%= link_to "Back to drawings", drawings_path, class: "" %>
-  <%= button_to "Destroy this drawing", @drawing, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "", data: { turbo_confirm: "Are you sure?" } %>
+  <%= link_to "EDIT", edit_drawing_path(@drawing), class: "" %>
+  <%= link_to "GO BACK TO DRAWINGS", drawings_path, class: "" %>
+  <%= button_to "DESTROY", @drawing, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "", data: { turbo_confirm: "ARE YOU SURE?" } %>
 </div>

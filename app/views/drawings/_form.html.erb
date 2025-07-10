@@ -1,10 +1,8 @@
 <canvas id="canvas" width="600" height="600" style="border: 1px solid #000"></canvas>
 
 <%= form_with model: @drawing, local: true, html: { multipart: true } do |form| %>
-
   <%= hidden_field_tag :image_data, "", id: "image-data" %>
-
-  <%= form.submit "submit drawing", onclick: "prepareImage()" %>
+  <%= form.submit "SUBMIT DRAWING", class:"italic cursor-pointer accent", onclick: "prepareImage()" %>
 <% end %>
 
 <script>
@@ -12,7 +10,12 @@
   const ctx = canvas.getContext("2d");
 
   const baseImg = new Image();
-  baseImg.src = "/images/base.png";
+  <% if @drawing.image.attached? %>
+    baseImg.src = "<%= url_for(@drawing.image) %>";
+    console.log("<%= url_for(@drawing.image) %>");
+  <% else %>
+    baseImg.src = "/images/base.png";
+  <% end %>
   baseImg.onload = () => {
     ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
   };
