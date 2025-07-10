@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'dotenv', groups: %i[development test]
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 8.0.2'
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -65,3 +67,13 @@ group :test do
 end
 
 gem 'view_component', '~> 3.8'
+
+gem 'omniauth-slack-openid'
+
+gem 'omniauth', '~> 2'
+
+gem 'oauth2', '~> 2.0'
+
+gem 'omniauth-rails_csrf_protection'
+
+gem 'devise'

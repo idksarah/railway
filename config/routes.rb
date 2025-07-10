@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   get 'create_rails', to: 'pages#create_rails', as: :create_rails
   get 'deploy_rails', to: 'pages#deploy_rails', as: :deploy_rails
   resources :drawings
+  get '/auth/:provider/callback', to: 'sessions#create', as: :slack_openid
+
+  get '/auth/slack', to: 'sessions#new'
+  get '/auth/slack/callback', to: 'sessions#create', as: :slack_callback
+  get '/auth/failure', to: 'sessions#failure'
+  delete '/logout', to: 'sessions#destroy', as: :logout
 end
