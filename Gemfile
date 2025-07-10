@@ -77,3 +77,5 @@ gem 'oauth2', '~> 2.0'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'devise'
+
+gem 'slack-ruby-client'

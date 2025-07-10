@@ -3,6 +3,7 @@ require 'stringio'
 
 class DrawingsController < ApplicationController
   before_action :set_drawing, only: %i[show edit update destroy]
+  before_action :require_login, only: %i[new create]
 
   # GET /drawings or /drawings.json
   def index
@@ -84,5 +85,11 @@ class DrawingsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def drawing_params
     params.require(:drawing).permit(:artist)
+  end
+
+  def require_login
+    return if session[:user_id]
+
+    redirect_to '/auth/slack', alert: 'YOU '
   end
 end

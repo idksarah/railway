@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_10_150202) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_10_182317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -54,6 +54,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_10_150202) do
     t.string "display_name"
     t.string "name"
     t.string "slack_id"
+    t.string "email"
+    t.string "encrypted_password"
+    t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

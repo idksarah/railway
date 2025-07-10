@@ -1,8 +1,6 @@
 <canvas id="canvas" width="600" height="600" style="border: 1px solid #000"></canvas>
 
 <%= form_with model: @drawing, local: true, html: { multipart: true } do |form| %>
-  <%= form.label :artist %>
-  <%= form.text_field :artist, :required => true %>
 
   <%= hidden_field_tag :image_data, "", id: "image-data" %>
 
@@ -39,7 +37,5 @@
   function prepareImage() {
     const dataUrl = canvas.toDataURL("image/png");
     document.getElementById("image-data").value = dataUrl;
-    console.log(dataUrl);
-    // console.log("Free me");
   }
 </script>

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create', as: :slack_openid
 
   get '/auth/slack', to: 'sessions#new'
-  get '/auth/slack/callback', to: 'sessions#create', as: :slack_callback
+  get '/auth/slack/callback', to: 'drawings#new', as: :slack_callback
   get '/auth/failure', to: 'sessions#failure'
   delete '/logout', to: 'sessions#destroy', as: :logout
 end

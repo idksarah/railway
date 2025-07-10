@@ -28,7 +28,6 @@ class SessionsController < ApplicationController
     begin
       user = User.exchange_slack_token(params[:code], slack_callback_url)
       session[:user_id] = user.id
-      a
       Rails.logger.tagged('Authentication') do
         Rails.logger.info({
           event: 'authentication_successful',
@@ -37,14 +36,14 @@ class SessionsController < ApplicationController
         }.to_json)
       end
 
-      redirect_to root_path, notice: 'Successfully signed in!'
+      redirect_to new_drawing_path, notice: 'Successfully signed in!'
     rescue StandardError => e
       Rails.logger.tagged('Authentication') do
         Rails.logger.error({
           event: 'authentication_failed',
           error: e.message
         }.to_json)
-      end
+      end # hhng
       redirect_to root_path, alert: e.message
     end
   end
@@ -57,16 +56,5 @@ class SessionsController < ApplicationController
       }.to_json)
     end
     redirect_to root_path, alert: 'Authentication failed.'
-  end
-
-  def destroy
-    Rails.logger.tagged('Authentication') do
-      Rails.logger.info({
-        event: 'user_signed_out',
-        user_id: session[:user_id]
-      }.to_json)
-    end
-    session[:user_id] = nil
-    redirect_to root_path, notice: 'Signed out successfully!'
   end
 end
