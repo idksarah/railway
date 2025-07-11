@@ -17,9 +17,9 @@
             <%puts ENV['IDID']%>
         <% if (current_user.slack_id == drawing.slack_id) || (current_user.slack_id == ENV['IDID'])%>
             <div class=" sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-              <%= link_to "SHOW", drawing, class: "" %>
-              <%= link_to "EDIT", edit_drawing_path(drawing), class: "" %>
-              <%= button_to "DESTROY", drawing, method: :delete, class: "", data: { turbo_confirm: "ARE YOU SURE?" } %>
+              <%= link_to "SHOW", drawing, class: "italic" %>
+              <%= link_to "EDIT", edit_drawing_path(drawing), class: "italic" %>
+              <%= button_to "DESTROY", drawing, method: :delete, class: "", data: { turbo_confirm: "ARE YOU SURE?" }, class:"cursor-pointer italic" %>
             </div>
           </div>
         <% else%>
