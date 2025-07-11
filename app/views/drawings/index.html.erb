@@ -13,9 +13,10 @@
     <% if @drawings.any? %>
       <% @drawings.each do |drawing| %>
           <div class="flex flex-col justify-between items-center pb-5 sm:pb-0">
-            <%= render drawing %>
-        <% if current_user.display_name == drawing.artist%>
-            <div class="h-[50%] sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
+            <%= render drawing, class:"h-[20em]" %>
+            <%puts ENV['IDID']%>
+        <% if (current_user.slack_id == drawing.slack_id) || (current_user.slack_id == ENV['IDID'])%>
+            <div class=" sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
               <%= link_to "SHOW", drawing, class: "" %>
               <%= link_to "EDIT", edit_drawing_path(drawing), class: "" %>
               <%= button_to "DESTROY", drawing, method: :delete, class: "", data: { turbo_confirm: "ARE YOU SURE?" } %>

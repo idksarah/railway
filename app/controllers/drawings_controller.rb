@@ -105,7 +105,7 @@ class DrawingsController < ApplicationController
   end
 
   def require_owner
-    return if current_user.display_name == @drawing.artist
+    return if current_user.slack_id == @drawing.slack_id
 
     redirect_to drawings_path, notice: 'NO VANDALISM :3'
   end
