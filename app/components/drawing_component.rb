@@ -6,5 +6,6 @@ class DrawingComponent < ViewComponent::Base
     @drawing = Drawing.find(num)
     @artist = @drawing.artist
     @image = @drawing.image
+    @number = @drawing.id
   end
 end
