@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get '/auth/slack/callback', to: 'drawings#new', as: :slack_callback
   get '/auth/failure', to: 'sessions#failure'
   delete '/logout', to: 'sessions#destroy', as: :logout
+  get '/proxy_image', to: 'proxy#image'
 end

@@ -7,15 +7,19 @@
 
 <script>
   const canvas = document.getElementById("canvas");
+  canvas.crossOrigin = "anonymous";
   const ctx = canvas.getContext("2d");
 
   const baseImg = new Image();
-  <% if @drawing.image.attached? %>
-    baseImg.src = "<%= url_for(@drawing.image) %>";
-    console.log("<%= url_for(@drawing.image) %>");
-  <% else %>
-    baseImg.src = "/images/base.png";
-  <% end %>
+baseImg.crossOrigin = "anonymous"; 
+
+// <% if @drawing.image.attached? %>
+//   baseImg.src = "<%= @drawing.image_url %>";
+// <% else %>
+//   baseImg.src = "/proxy_image?url=" + encodeURIComponent("https://hc-cdn.hel1.your-objectstorage.com/...base.png");
+// <% end %>
+baseImg.src = "/proxy_image?url=" + encodeURIComponent("https://hc-cdn.hel1.your-objectstorage.com/s/v3/1fe23d40dc58ddaa6c91bd22c6553f489d4fdfac_base.png");
+
   baseImg.onload = () => {
     ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
   };
@@ -36,9 +40,23 @@
     ctx.beginPath();
     ctx.moveTo(e.offsetX, e.offsetY);
   }
+function prepareImage() {
+  const dataUrl = canvas.toDataURL("image/png"); 
+  document.getElementById("image-data").value = dataUrl;
 
-  function prepareImage() {
-    const dataUrl = canvas.toDataURL("image/png");
-    document.getElementById("image-data").value = dataUrl;
-  }
+  fetch("https://cdn.hackclub.com/api/v3/new", {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer ${API_TOKEN}",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify([dataUrl])
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Uploaded!", data);
+    })
+    .catch(error => console.error("UPLOAD FAILED", error));
+}
+
 </script>

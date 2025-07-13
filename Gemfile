@@ -79,3 +79,5 @@ gem 'omniauth-rails_csrf_protection'
 gem 'devise'
 
 gem 'slack-ruby-client'
+
+gem 'httparty'

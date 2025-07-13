@@ -88,14 +88,12 @@ class DrawingsController < ApplicationController
     )
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_drawing
     @drawing = Drawing.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def drawing_params
-    params.require(:drawing).permit
+    params.require(:drawing)
   end
 
   def require_login
@@ -105,7 +103,7 @@ class DrawingsController < ApplicationController
   end
 
   def require_owner
-    return if current_user.slack_id == @drawing.slack_id
+    return if current_user.slack_id == @drawing.slack_id || current_user.slack_id == ENV['IDID']
 
     redirect_to drawings_path, notice: 'NO VANDALISM :3'
   end
