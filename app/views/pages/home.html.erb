@@ -1,7 +1,7 @@
 <% content_for :title, "RAILWAY" %>
 <div class="flex p-2 overflow-hidden" style="flex-direction: column; align-items: center; width: 100vw;">
   <p class="accent h1 italic titling">RAILWAY</p>
-  <p class="h2 italic titling accent">7/11 to 7/16 | <span class="accent titling"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
+  <p class="h2 italic titling accent">7/13 to 7/20 | <span class="accent titling"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
   </span> </p>
   <a class="accentBg accent1 italic cursor-pointer p-2 m-10" href="https://forms.hackclub.com/t/mUtzeXncPXus">
   SUBMIT
@@ -23,11 +23,10 @@
     <ul class="list-disc h4">
       <li>track at least 2 hours with hackatime</li>
       <li>utilize the rails router</li>
-      <li>create a backend where users can upload and see data from other users</li>
       <li>include a create, read, update, and delete endpoint</li>
       <li>include error handling/minimum requirements in your post/update endpoints</li>
       <li>deploy your site</li>
-      <li>open source your code on github</li>
+      <li>open source your code on github (files, readme, and images!)</li>
       <li>submission must be meaningful. ie, personalize it! it has to be more than just the product of a rails tutorial </li>
       <%# <li></li> %>
     </ul>
@@ -38,7 +37,7 @@
     <%= render(FaqComponent.new(q:"do i have to use hackatime?", a:"yes! get started here: https://hackatime.hackclub.com"))%>
     <%= render(FaqComponent.new(q:"what are some ways users can interact with a db?", a:"comment sections! counters! drawings! etc!"))%>
     <%= render(FaqComponent.new(q:"how cool are the stickers?", a:"totally rad!"))%>
-    <%= render(FaqComponent.new(q:"when does this end?", a:"7/16/2025 11:59 EST"))%>
+    <%= render(FaqComponent.new(q:"when does this end?", a:"7/20/2025 11:59 EST"))%>
     <%= render(FaqComponent.new(q:"i have more questions!", a:"check out #railway on the hack club slack!"))%>
   </div>
 </div>
