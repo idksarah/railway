@@ -3,6 +3,7 @@
     <p># <%= drawing.id%></p>
     <strong class="block font-medium mb-1">artist:</strong>
     <%= drawing.artist %>
-    <%= image_tag (drawing.image) if drawing.image.attached?%>
+    <% puts drawing.image_url%>
+    <img src={<%=drawing.image_url%>}>
   </div>
 </div>

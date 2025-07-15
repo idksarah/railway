@@ -5,7 +5,7 @@ class DrawingComponent < ViewComponent::Base
   def initialize(num:)
     @drawing = Drawing.find(num)
     @artist = @drawing.artist
-    @image = @drawing.image
+    @image_url = @drawing.image_url
     @number = @drawing.id
   end
 end

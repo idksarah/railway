@@ -26,36 +26,29 @@ class DrawingsController < ApplicationController
 
   # POST /drawings or /drawings.json
   def create
-    @drawing = Drawing.new
+    Rails.logger.info "drawing_params: #{drawing_params.inspect}"
+    Rails.logger.info "artist: #{current_user.display_name}"
+    Rails.logger.info "slack id: #{current_user.slack_id}"
 
-    @drawing.artist = current_user.display_name
-    @drawing.slack_id = current_user.slack_id
+    @drawing = Drawing.new(drawing_params.merge(
+                             artist: current_user.display_name,
+                             slack_id: current_user.slack_id
+                           ))
 
-    attach_image_if_present
-
-    respond_to do |format|
-      if @drawing.save
-        format.html { redirect_to @drawing, notice: 'Drawing was successfully created.' }
-        format.json { render :show, status: :created, location: @drawing }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @drawing.errors, status: :unprocessable_entity }
-      end
+    if @drawing.save
+      redirect_to @drawing, notice: 'DRAWING SUCCESSFULLY CREATED'
+    else
+      Rails.logger.debug @drawing.errors.full_messages
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /drawings/1 or /drawings/1.json
   def update
-    attach_image_if_present
-
-    respond_to do |format|
-      if @drawing.save
-        format.html { redirect_to @drawing, notice: 'DRAWING WAS SUCCESSFULLY UPDATED.' }
-        format.json { render :show, status: :created, location: @drawing }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @drawing.errors, status: :unprocessable_entity }
-      end
+    if @drawing.update(drawing_params)
+      redirect_to @drawing, notice: 'DRAWING SUCCESSFULLY UPDATED'
+    else
+      render :edit, status: unprocessable_entity
     end
   end
 
@@ -71,23 +64,6 @@ class DrawingsController < ApplicationController
 
   private
 
-  def attach_image_if_present
-    return unless params[:image_data].present?
-
-    puts 'image data present'
-    image_data = params[:image_data]
-    content_type = image_data[%r{data:(image/\w+);base64}, 1] || 'image/png'
-    base64_string = image_data.split(',')[1]
-    decoded_data = Base64.decode64(base64_string)
-    io = StringIO.new(decoded_data)
-
-    @drawing.image.attach(
-      io: io,
-      filename: "drawing-#{Time.now.to_i}.png",
-      content_type: content_type
-    )
-  end
-
   # Use callbacks to share common setup or constraints between actions.
   def set_drawing
     @drawing = Drawing.find(params[:id])
@@ -95,7 +71,7 @@ class DrawingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def drawing_params
-    params.require(:drawing).permit
+    params.require(:drawing).permit(:image_url)
   end
 
   def require_login

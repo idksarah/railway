@@ -1,8 +1,8 @@
 <canvas id="canvas" width="600" height="600" style="border: 1px solid #000"></canvas>
 
 <%= form_with model: @drawing, local: true, html: { multipart: true } do |form| %>
-  <%= hidden_field_tag :image_data, "", id: "image-data" %>
-  <%= form.submit "SUBMIT DRAWING", class:"italic cursor-pointer accent", onclick: "prepareImage()" %>
+  <%= form.hidden_field :image_url, id: "image_url" %>
+  <%= form.submit "SUBMIT DRAWING", class:"italic cursor-pointer accent", onclick: "prepareImage(event)" %>
 <% end %>
 
 <script>
@@ -10,15 +10,16 @@
   const ctx = canvas.getContext("2d");
 
   const baseImg = new Image();
-  <% if @drawing.image.attached? %>
-    baseImg.src = "<%= url_for(@drawing.image) %>";
-    console.log("<%= url_for(@drawing.image) %>");
-  <% else %>
-    baseImg.src = "/images/base.png";
-  <% end %>
+
+  const tempUrl = <%= raw((@drawing.image_url.presence || "https://hc-cdn.hel1.your-objectstorage.com/s/v3/1fe23d40dc58ddaa6c91bd22c6553f489d4fdfac_base.png").to_json) %>
+
+  const proxyUrl = `/proxy_image?url=${encodeURIComponent(tempUrl)}`;
+
   baseImg.onload = () => {
     ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
   };
+
+  baseImg.src = proxyUrl;
 
   let drawing = false;
   canvas.addEventListener("mousedown", () => { drawing = true; });
@@ -37,8 +38,32 @@
     ctx.moveTo(e.offsetX, e.offsetY);
   }
 
-  function prepareImage() {
+  async function prepareImage(e) {
+    e.preventDefault();
     const dataUrl = canvas.toDataURL("image/png");
-    document.getElementById("image-data").value = dataUrl;
+
+    let finalUrl = dataUrl;
+
+    <% if Rails.env.production? %>
+      try {
+        const resp = await fetch("https://cdn.hackclub.com/api/v3/new",
+          {
+            method: "POST",
+            headers: {
+              "Authorization": "Bearer <%= ENV.fetch("API_TOKEN") %>",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify([dataUrl])
+          }
+        );
+        const json = await resp.json();
+        finalUrl = json.files[0].deployedUrl;
+      } catch (err) {
+        console.error ("CDN upload failed:", err);
+      }
+    <% end%>
+    document.getElementById('image_url').value = finalUrl;
+    e.target.form.submit();
   }
+  
 </script>

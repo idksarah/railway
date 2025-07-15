@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   # root 'drawings#index'
   get 'pages/home'
+  get 'install_linux', to: 'pages#install_linux', as: :install_linux
   get 'wakatime', to: 'pages#wakatime', as: :wakatime
   get 'github', to: 'pages#github', as: :github
   get 'create_rails', to: 'pages#create_rails', as: :create_rails
@@ -24,4 +25,6 @@ Rails.application.routes.draw do
   get '/auth/slack/callback', to: 'drawings#new', as: :slack_callback
   get '/auth/failure', to: 'sessions#failure'
   delete '/logout', to: 'sessions#destroy', as: :logout
+
+  get '/proxy_image', to: 'images#proxy_image'
 end
