@@ -79,26 +79,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production: 
-  primary:
-    adapter: postgresql
-    url: <%= ENV['DATABASE_URL'] %>
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    timeout: 5000
-  cache:
-    adapter: postgresql
-    url: <%= ENV['CACHE_DATABASE_URL'] || ENV['DATABASE_URL'] %>
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    timeout: 5000
-    migrations_paths: db/cache_migrate
-  queue:
-    adapter: postgresql
-    url: <%= ENV['QUEUE_DATABASE_URL'] || ENV['DATABASE_URL'] %>
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    timeout: 5000
-    migrations_paths: db/queue_migrate
-  cable:
-    adapter: postgresql
-    url: <%= ENV['CABLE_DATABASE_URL'] || ENV['DATABASE_URL'] %>
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    timeout: 5000
-    migrations_paths: db/cable_migrate
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
