@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'github', to: 'pages#github', as: :github
   get 'create_rails', to: 'pages#create_rails', as: :create_rails
   get 'deploy_rails', to: 'pages#deploy_rails', as: :deploy_rails
+  get 'vscode', to: 'pages#vscode', as: :vscode
+  get 'git', to: 'pages#git', as: :git
   resources :drawings
   get '/auth/:provider/callback', to: 'sessions#create', as: :slack_openid
 
