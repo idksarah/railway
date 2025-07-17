@@ -1,21 +1,53 @@
-<%= link_to "GO BACK ", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: CREATE A RAILS APP</p>
-
-<div>
-  <p class="h2 accent p-2">
-    follow the official instructions for installing ruby on rails 
-    <a href="https://guides.rubyonrails.org/install_ruby_on_rails.html#choose-your-operating-system" target="_blank" class="underline cursor">
-      https://guides.rubyonrails.org/install_ruby_on_rails.html#choose-your-operating-system
-    </a>
-  </p>
-  <p class="h2 accent p-2">
-    follow the officials instructions for creating a project with ruby on rails: 
-    <a href="https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-app" target="_blank" class="underline cursor">
-      https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-app
-    </a>
-    <p><strong>!! in the command to create the app, attach </p></strong>
-    <code>--database=postgresql</code>
-    <p>eg, </p>
-    <code>rails new store --database=postgresql</code>
-  </p>
-</div>
+<%= link_to "GO BACK", root_path(anchor: "guides"), class: "h2 italic accent cursor hover:underline"%>
+<article class="guide-container p-6 max-w-2xl mx-auto bg-white rounded shadow mt-6">
+  <header>
+    <h1 class="h2 italic mb-6">How to: Create a Rails App</h1>
+  </header>
+  <section class="mb-6">
+    <h2 class="h3 accent mb-2">1. Install Ruby on Rails</h2>
+    <p>
+      Follow the official instructions for installing Ruby on Rails:<br>
+      <a href="https://guides.rubyonrails.org/install_ruby_on_rails.html#choose-your-operating-system" target="_blank" class="underline cursor accent">
+        guides.rubyonrails.org/install_ruby_on_rails.html#choose-your-operating-system
+      </a>
+    </p>
+  </section>
+  <section class="mb-6">
+    <h2 class="h3 accent mb-2">2. Install PostgreSQL Packages</h2>
+    <p>
+      Using PostgreSQL in Ruby requires you to have PostgreSQL installed on your system. You will need to install the server, client, and development header packages. If they are not installed, <code>bundle install</code> will fail when setting up the project and you won't be able to create a database.
+    </p>
+    <ul class="list-disc ml-6 mt-2">
+      <li>
+        <strong>Ubuntu/Debian:</strong> <code>sudo apt install postgresql postgresql-contrib libpq-dev</code>
+      </li>
+      <li>
+        <strong>Fedora:</strong> <code>sudo dnf install postgresql postgresql-server postgresql-devel</code>
+      </li>
+      <li>
+        <strong>macOS:</strong>
+        <div class="ml-4">
+          <code>brew install postgresql</code><br>
+          <code>brew services start postgresql</code>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section class="mb-6">
+    <h2 class="h3 accent mb-2">3. Create Your Rails Project</h2>
+    <p>
+      Follow the official instructions for creating a new Rails project:<br>
+      <a href="https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-app" target="_blank" class="underline cursor accent">
+        guides.rubyonrails.org/getting_started.html#creating-a-new-rails-app
+      </a>
+    </p>
+    <ul class="list-disc ml-6 mt-2">
+      <li>
+        <strong>Important:</strong> In the command to create the app, add the flag:<br> <code>--database=postgresql</code>
+      </li>
+      <li>
+        Example: <code>rails new store --database=postgresql</code>
+      </li>
+    </ul>
+  </section>
+</article>

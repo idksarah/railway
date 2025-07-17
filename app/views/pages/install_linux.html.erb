@@ -1,13 +1,26 @@
-<%= link_to "GO BACK", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: INSTALL LINUX</p>
-<div>
-    <p>rails is built for unix-based systems (eg mac and linux). if you're on windows, you'll have to install the windows subsystem (wsl2) for linux.</p>
-    <p class="h2 accent p-2">
-    follow the odin project's guide on setting up wsl2:
-    <a href="https://www.theodinproject.com/lessons/foundations-installations">
-        https://www.theodinproject.com/lessons/foundations-installations
-    </a>
-    <p>- follow 'wsl2 (advanced)' under 'os installation'</p>
-    <p>- follow 'wsl2' under 'google chrome installation'</p>
+<%= link_to "GO BACK", root_path(anchor: "guides"), class: "h2 italic accent cursor hover:underline"%>
+<article class="guide-container p-6 max-w-2xl mx-auto bg-white rounded shadow mt-6">
+  <header>
+    <h1 class="h2 italic mb-6">How to: Install Linux</h1>
+  </header>
+  <section class="mb-6">
+    <h2 class="h3 accent mb-2">Why?</h2>
+    <p>
+      Rails is built for Unix-based systems (e.g., Mac and Linux). If you're on Windows, you'll have to install the Windows Subsystem for Linux (WSL2).
     </p>
-</div>
+  </section>
+  <section>
+    <h2 class="h3 accent mb-2">1. Set Up WSL2</h2>
+    <p>
+      Follow the Odin Project's guide on setting up WSL2:<br>
+      <a href="https://www.theodinproject.com/lessons/foundations-installations" target="_blank" class="underline cursor accent">
+        theodinproject.com/lessons/foundations-installations
+      </a>
+    </p>
+    <ul class="list-disc ml-6 mt-2">
+      <li>
+        Follow <strong>WSL2 (advanced)</strong> under <strong>OS installation</strong>.
+      </li>
+    </ul>
+  </section>
+</article>

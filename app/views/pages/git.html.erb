@@ -1,13 +1,33 @@
-<%= link_to "GO BACK", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: SETUP GIT</p>
-<div>
-<p class="h2 accent p-2">
-    follow this guide: 
-    <a href="https://www.theodinproject.com/lessons/foundations-introduction-to-git" target="_blank" class="underline cursor">
-      https://www.theodinproject.com/lessons/foundations-introduction-to-git
-    </a>
-  </p>
-</div>
-
-<%# <p class="h2 accent p-2"></p>
-<p></p> %>
+<%= link_to "GO BACK", root_path(anchor: "guides"), class: "h2 italic accent cursor hover:underline"%>
+<article class="guide-container p-6 max-w-2xl mx-auto bg-white rounded shadow mt-6">
+  <header>
+    <h1 class="h2 italic mb-6">How to: Set Up Git</h1>
+  </header>
+  <section>
+    <h2 class="h3 accent mb-2">1. Learn about Git</h2>
+    <p>
+      Read up here on what Git is and why it's useful:<br>
+      <a href="https://www.theodinproject.com/lessons/foundations-introduction-to-git" target="_blank" class="underline cursor accent">
+        theodinproject.com/lessons/foundations-introduction-to-git
+      </a>
+      <ul class="list-disc ml-6 mt-2">
+      <li>
+        Here, you will learn the basics of Git, how to set it up, and how to use it with your projects.
+      </li>
+    </ul>
+    </p>
+  </section>
+  <section class="mb-6">
+    <h2 class="h3 accent mb-2">2. Install Git</h2>
+    <p>
+      Follow the official Git installation guide for your operating system:<br>
+      <a href="https://www.theodinproject.com/lessons/foundations-setting-up-git" target="_blank" class="underline cursor accent">
+        theodinproject.com/lessons/foundations-setting-up-git
+      </a>
+    </p>
+    <ul class="list-disc ml-6 mt-2">
+      <li>
+        Make sure to follow the instructions for your specific OS (Linux if you're using WSL2).
+      </li>
+    </ul>
+</article>

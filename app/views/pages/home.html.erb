@@ -17,8 +17,8 @@
   </div>
 </div>
 
-<div class="flex p-2">
-  <div class="requirements  p-2 h2 size-[50%]">
+<div class="flex p-2 gap-2">
+  <div class="requirements p-2 h2 size-[50%]">
     <p class="h2 accent italic">REQUIREMENTS</p>
     <ul class="list-disc h4">
       <li>track at least 2 hours with hackatime</li>
@@ -31,7 +31,7 @@
       <%# <li></li> %>
     </ul>
   </div>
-  <div class="size-[50%] faqs  p-2 accentBg accent1">
+  <div class="size-[50%] faqs p-2 accentBg accent1">
     <p class="h2 italic">FAQS</p>
     <%= render(FaqComponent.new(q:"can i participate?", a:"if you're in middle school or high school, yes!"))%>
     <%= render(FaqComponent.new(q:"do i have to use hackatime?", a:"yes! get started here: https://hackatime.hackclub.com"))%>
@@ -57,9 +57,9 @@
   </div>
 
 </div>
-<div class="guides">
+<div class="guides" id="guides">
   <p class="h2 italic" style="text-align: center">GUIDES</p>
-  <div class="p-2 flex gap-2">
+  <div class="p-2 flex flex-col sm:flex-row gap-2 w-full">
     <%= link_to "(IF ON WINDOWS) INSTALL LINUX", install_linux_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer flex-1" %>
     <%= link_to "INSTALL VSCODE", vscode_path, class: "accentBg accent1 h3 italic p-2  cursor-pointer flex-1" %>
     <%= link_to "INSTALL HACKATIME", wakatime_path, class: "accentBg accent1 h3 italic p-2  cursor-pointer flex-1" %>
