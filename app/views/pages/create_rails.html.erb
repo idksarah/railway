@@ -1,30 +1,21 @@
 <%= link_to "GO BACK ", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: CREATE A RAILS APP (WITH POSTGRESQL)</p>
-<div>
-    <p class="h2 accent p-2">download ruby; follow this 
-    <a href="https://www.theodinproject.com/lessons/ruby-installing-ruby" target="_blank" class="underline cursor">
-        guide
-    </a>
-    </p>
-    <p class="h2 accent p-2">download rails; run the following:</p>
-    <code>gem install rails</code>
-    <p class="h2 accent p-2">once it finishes, run the following:</p>
-    <code>rails -v</code>
-    <p>if installed correctly, this should return the version of rails you just installed</p>
-    <p class="h2 accent p-2">install yarn; run the following</p>
-    <code>npm install --global yarn</code>
-    <p class="h2 accent p-2">verify your installation by running the following:</p>
-    <code>yarn --version</code>
-    <p>if installed correctly, this should return the version of yan you just installed</p>
-    <p class="h2 accent p-2">navigate to your earlier-created github repo. run the following:</p>
-    <code>rails new whatever-you-want-to-name-it  --database=postgresql</code>
-    <p class="h2 accent p-2">navigate to config/database.yml. uncomment the following line:</p>
-    <code>39 | # host: localhost</code>
-    <p class="h2 accent p-2">create your database; run the following command:</p>
-    <code>rails db:create</code>
-    <p class="h2 accent p-2">start up your rails app:</p>
-    <code>rails s</code>
-</div>
+<p class="h2 italic">HOW TO: CREATE A RAILS APP</p>
 
-<%# <p class="h2 accent p-2"></p>
-<p></p> %>
+<div>
+  <p class="h2 accent p-2">
+    follow the official instructions for installing ruby on rails 
+    <a href="https://guides.rubyonrails.org/install_ruby_on_rails.html#choose-your-operating-system" target="_blank" class="underline cursor">
+      https://guides.rubyonrails.org/install_ruby_on_rails.html#choose-your-operating-system
+    </a>
+  </p>
+  <p class="h2 accent p-2">
+    follow the officials instructions for creating a project with ruby on rails: 
+    <a href="https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-app" target="_blank" class="underline cursor">
+      https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-app
+    </a>
+    <p><strong>!! in the command to create the app, attach </p></strong>
+    <code>--database=postgresql</code>
+    <p>eg, </p>
+    <code>rails new store --database=postgresql</code>
+  </p>
+</div>

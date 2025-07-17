@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         }.to_json)
       end
       session[:state] = nil
-      redirect_to root_path, alert: 'Authentication failed. Possible CSRF'
+      redirect_to root_path, alert: 'AUTHENTICATION FAILED'
       return
     end
 
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
         }.to_json)
       end
 
-      redirect_to new_drawing_path, notice: 'Successfully signed in!'
+      redirect_to new_drawing_path, notice: 'SUCCESSFULLY SIGNED IN'
     rescue StandardError => e
       Rails.logger.tagged('Authentication') do
         Rails.logger.error({
@@ -55,6 +55,6 @@ class SessionsController < ApplicationController
         error: 'OAuth failure callback'
       }.to_json)
     end
-    redirect_to root_path, alert: 'Authentication failed.'
+    redirect_to root_path, alert: 'AUTHENTICATION FAILED'
   end
 end

@@ -10,6 +10,5 @@
   <%= render @drawing %>
 
   <%= link_to "EDIT", edit_drawing_path(@drawing), class: "" %>
-  <%= link_to "GO BACK TO DRAWINGS", drawings_path, class: "" %>
   <%= button_to "DESTROY", @drawing, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "", data: { turbo_confirm: "ARE YOU SURE?" } %>
 </div>

@@ -1,24 +1,15 @@
-# README
+# RAILWAY
+railway.hackclub.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+built a site with ruby on rails -> receive stickers
 
-Things you may want to cover:
+## USAGE
+- clone this repo
+- run 'bundle install'
+- run 'bin/rails db:migrate'
+- run 'tailwindcss:watch'
+- run 'bin/rails s'
 
-* Ruby version
+![ss](public/ss.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+made with <3 by idksarah

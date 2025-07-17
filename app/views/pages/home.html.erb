@@ -1,15 +1,18 @@
 <% content_for :title, "RAILWAY" %>
 <div class="flex p-2 overflow-hidden" style="flex-direction: column; align-items: center; width: 100vw;">
   <p class="accent h1 italic titling">RAILWAY</p>
-  <p class="h2 italic titling accent">7/13 to 7/20 | <span class="accent titling"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
+  <p class="h2 italic titling accent text-center">7/15 to 7/22 11:59 est | <span class="accent titling"><%= link_to '#railway', 'https://hackclub.slack.com/archives/C094T1FL2KG'%> on the hack club slack
   </span> </p>
-  <button class="accentBg accent1 italic cursor-pointer p-2 m-10">SUBMIT</button>
-  <img src="/images/bg.png" style="margin-top: -7.5em; z-index: -1; opacity: 70%">
+  <a class="accentBg accent1 italic cursor-pointer p-2 m-10" href="https://forms.hackclub.com/t/mUtzeXncPXus">
+  SUBMIT
+</a>
+
+  <img src="/images/bg.png" style="margin-top: -10em; z-index: -1; opacity: 70%">
 </div>
 <div class="about flex gap-10 py-8">
-  <p class="h2 italic width-[50%]" style="text-align: center">WHAT'S THE DEAL HERE?</p>
-  <div>
-    <p class="h3 width-[50%] italic">build a site with ruby on rails, receive stickers!</p>
+  <p class="h2 italic w-full md:w-1/2" style="text-align: center">WHAT'S THE DEAL HERE?</p>
+  <div class=" md:w-1/2">
+    <p class="h3 w-full italic">build a site with ruby on rails, receive stickers!</p>
     <p>(stickers at the bottom)</p>
   </div>
 </div>
@@ -20,11 +23,11 @@
     <ul class="list-disc h4">
       <li>track at least 2 hours with hackatime</li>
       <li>utilize the rails router</li>
-      <li>create a backend where users can upload and see data from other users</li>
       <li>include a create, read, update, and delete endpoint</li>
       <li>include error handling/minimum requirements in your post/update endpoints</li>
       <li>deploy your site</li>
-      <li>open source your code on github</li>
+      <li>open source your code on github (files, readme, and images!)</li>
+      <li>submission must be meaningful. ie, personalize it! it has to be more than just the product of a rails tutorial </li>
       <%# <li></li> %>
     </ul>
   </div>
@@ -34,44 +37,43 @@
     <%= render(FaqComponent.new(q:"do i have to use hackatime?", a:"yes! get started here: https://hackatime.hackclub.com"))%>
     <%= render(FaqComponent.new(q:"what are some ways users can interact with a db?", a:"comment sections! counters! drawings! etc!"))%>
     <%= render(FaqComponent.new(q:"how cool are the stickers?", a:"totally rad!"))%>
-    <%= render(FaqComponent.new(q:"when does this end?", a:"7/20/2025 11:59 EST"))%>
     <%= render(FaqComponent.new(q:"i have more questions!", a:"check out #railway on the hack club slack!"))%>
   </div>
 </div>
 <div class="flex flex-col gallery p-2" style=" align-items:center">
   <p class="h2 italic" style="text-align:center">GALLERY</p>
-  <p class="italic"style="text-align:center;" >reload to see other hack clubber's drawings</p>
   <div class="flex gap-2 p-2">
     <% if Drawing.exists? %>
       <%=render(DrawingComponent.new(num: Drawing.pluck(:id).sample ))%>
       <%=render(DrawingComponent.new(num: Drawing.pluck(:id).sample ))%>
       <%=render(DrawingComponent.new(num: Drawing.pluck(:id).sample ))%>
     <%else%>
-      <p>nothing here! be the first! :3</p>
+      <p>nothing here!</p>
     <%end%>
   </div>
   <div class="flex gap-2">
     <a href='/auth/slack' class='accentBg accent1 italic p-2'>WANT TO DRAW YOUR OWN?</a>
-    <%# <%= link_to "WANT TO DRAW YOUR OWN?", new_drawing_path, class: "accentBg accent1 italic p-2"%>
     <%= link_to "VIEW THE REST", drawings_path, class: "accentBg accent1 italic p-2"%>
   </div>
 
 </div>
 <div class="guides">
   <p class="h2 italic" style="text-align: center">GUIDES</p>
-  <p class="italic"style="text-align:center" >some how-to's by yours truly :3</p>
   <div class="p-2 flex gap-2">
-    <%= link_to "INSTALL WAKATIME", wakatime_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]" %>
-    <%= link_to "CREATE A GITHUB REPO", github_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]"%>
-    <%= link_to "CREATE A RAILS APP", create_rails_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]"%>
-    <%= link_to "DEPLOY A RAILS APP", deploy_rails_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer width-[25%]"%>
-
+    <%= link_to "(IF ON WINDOWS) INSTALL LINUX", install_linux_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer flex-1" %>
+    <%= link_to "INSTALL VSCODE", vscode_path, class: "accentBg accent1 h3 italic p-2  cursor-pointer flex-1" %>
+    <%= link_to "INSTALL HACKATIME", wakatime_path, class: "accentBg accent1 h3 italic p-2  cursor-pointer flex-1" %>
+    <%= link_to "SETUP GIT", git_path, class: "accentBg accent1 h3 italic p-2  cursor-pointer flex-1" %>
+    <%= link_to "CREATE A GITHUB REPO", github_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer flex-1" %>
+    <%= link_to "CREATE A RAILS APP", create_rails_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer flex-1" %>
+    <%= link_to "DEPLOY A RAILS APP", deploy_rails_path, class: "accentBg accent1 h3 italic p-2 inline-block cursor-pointer flex-1" %>
   </div>
 </div>
+
 <div class="stickers">
   <p class="accent h2 italic">sticker sheet! :D</p>
-  <img class="max-w-3xl" src="/images/stickers.png " alt="stickers">
+  <img class="" src="/images/stickers.png " alt="stickers">
 </div>
 <div class="footer p-2">
-  <p class="italic">built with <span class="accent"><3</span> by <a class="accent" target="_blank" href="https://github.com/idksarah">idksarah</a></p>
+  <p class="italic">built with <span class="accent"><3</span> by <a class="accent" target="_blank" href="https://github.com/idksarah">@idksarah</a></p>
 </div>

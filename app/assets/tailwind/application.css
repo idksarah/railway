@@ -2,10 +2,12 @@
 
 body {
     background-color: #EBE4D3;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 main {
-    
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -16,17 +18,17 @@ main {
 }
 
 .h1 {
-    font-size: 10rem;
+    font-size: 4rem;
     font-weight: 800;
 }
 
 .h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
 }
 
 .h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
 }
 
@@ -46,15 +48,59 @@ main {
     background-color: #CC0000;
 }
 
-.h1, .h2, .h3 {
-}
-
-.newStep {
-
-}
 .w-full {
     overflow-x: hidden;
 }
+
 .titling {
     /* -webkit-text-stroke: 2px #CC0000; */
+}
+
+@media (min-width: 640px) {
+    .h1 {
+        font-size: 6rem;
+    }
+    
+    .h2 {
+        font-size: 2rem;
+    }
+    
+    .h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .h1 {
+        font-size: 8rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .h1 {
+        font-size: 10rem;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a, button {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
 }
