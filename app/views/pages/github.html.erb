@@ -1,18 +1,24 @@
-<%= link_to "GO BACK ", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: CREATE A GITHUB REPO</p>
-<div>
-    <p class="h2 accent p-2">navigate to
-    <a href="github.com" target="_blank" class="underline cursor">
-        github.com
-    </a>
+<%= link_to "GO BACK", root_path(anchor: "guides"), class: "h2 italic accent cursor hover:underline"%>
+<article class="guide-container p-6 max-w-2xl mx-auto mt-6">
+  <header>
+    <h1 class="h2 italic mb-6">HOW TO: CREATE A GITHUB REPO</h1>
+  </header>
+  <section>
+    <h2 class="h3 accent mb-2">1. go to github</h2>
+    <p>
+      navigate to:<br>
+      <a href="https://github.com/new" target="_blank" class="underline cursor accent">
+        github.com/new
+      </a>
     </p>
-    <p class="h2 accent p-2">select yourself as the owner and name your repo whatever your heart desires</p>
-    <p class="h2 accent p-2">scroll to the bottom and select create repository</p>
-    <p class="h2 accent p-2">clone the repo locally:</p>
-    <p>copy the ssh url and paste this command into your terminal</p>
-    <code>git clone replace_with_ssh_url</code>
-<p class="h2 accent p-2"></p>
-</div>
-
-<%# <p class="h2 accent p-2"></p>
-<p></p> %>
+    <ul class="list-disc ml-6 mt-2">
+      <li>select yourself as the owner and name your repo whatever you want.</li>
+      <li>scroll to the bottom and select <strong>create repository</strong>.</li>
+      <li>
+        clone the repo locally:<br>
+        <span>copy the ssh url and paste this command into your terminal:</span><br>
+        <code>git clone replace_this_with_your_ssh_url</code>
+      </li>
+    </ul>
+  </section>
+</article>

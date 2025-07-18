@@ -69,7 +69,6 @@ class DrawingsController < ApplicationController
     @drawing = Drawing.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def drawing_params
     params.require(:drawing).permit(:image_url)
   end

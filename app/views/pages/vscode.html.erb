@@ -1,13 +1,22 @@
-<%= link_to "GO BACK", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: INSTALL VSCODE</p>
-<div>
-<p class="h2 accent p-2">
-    follow this guide: 
-    <a href="https://www.theodinproject.com/lessons/foundations-text-editors" target="_blank" class="underline cursor">
-      https://www.theodinproject.com/lessons/foundations-text-editors
-    </a>
-  </p>
-</div>
+<%= link_to "GO BACK", root_path(anchor: "guides"), class: "h2 italic accent cursor hover:underline lowercase tracking-wide" %>
 
-<%# <p class="h2 accent p-2"></p>
-<p></p> %>
+<article class="guide-container p-6 max-w-2xl mx-auto mt-6">
+  <header>
+    <h1 class="h2 italic mb-6 uppercase tracking-widest">HOW TO: INSTALL VSCODE</h1>
+  </header>
+
+  <section>
+    <h2 class="h3 accent mb-2 lowercase italic tracking-tight">1. vscode + wsl setup</h2>
+    <p class="leading-relaxed lowercase tracking-normal">
+      follow the official microsoft tutorial for using vscode with wsl:<br>
+      <a href="https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode" target="_blank" class="underline cursor accent lowercase tracking-tight">
+        learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode
+      </a>
+    </p>
+    <ul class="list-disc ml-6 mt-2 lowercase tracking-tight">
+      <li>
+        make sure to complete the optional part of installing windows terminal. we will install git later on!
+      </li>
+    </ul>
+  </section>
+</article>

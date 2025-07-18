@@ -1,13 +1,22 @@
-<%= link_to "GO BACK", root_path, class: "h1 italic accent cursor"%>
-<p class="h2 italic">HOW TO: SETUP GIT</p>
-<div>
-<p class="h2 accent p-2">
-    follow this guide: 
-    <a href="https://www.theodinproject.com/lessons/foundations-introduction-to-git" target="_blank" class="underline cursor">
-      https://www.theodinproject.com/lessons/foundations-introduction-to-git
-    </a>
-  </p>
-</div>
+<%= link_to "GO BACK", root_path(anchor: "guides"), class: "h2 italic accent cursor hover:underline lowercase tracking-wide" %>
 
-<%# <p class="h2 accent p-2"></p>
-<p></p> %>
+<article class="guide-container p-6 max-w-2xl mx-auto mt-6">
+  <header>
+    <h1 class="h2 italic mb-6 uppercase tracking-widest">how to: set up git</h1>
+  </header>
+
+  <section class="mb-6">
+    <h2 class="h3 accent mb-2 lowercase italic tracking-tight">2. install git</h2>
+    <p class="leading-relaxed lowercase tracking-normal">
+      follow the official git installation guide for your operating system:<br>
+      <a href="https://www.theodinproject.com/lessons/foundations-setting-up-git" target="_blank" class="underline cursor accent lowercase tracking-tight">
+        theodinproject.com/lessons/foundations-setting-up-git
+      </a>
+    </p>
+    <ul class="list-disc ml-6 mt-2 lowercase tracking-tight">
+      <li>
+        make sure to follow the instructions for your specific os (linux if you're using wsl2).
+      </li>
+    </ul>
+  </section>
+</article>
